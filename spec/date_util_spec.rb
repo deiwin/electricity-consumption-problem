@@ -2,6 +2,22 @@ require './date_util'
 require 'date'
 
 describe DateUtil do
+  describe '#create_time' do
+    it 'should create a time from year, month and hour of month' do
+      DateUtil.create_time({
+        :year => 2012,
+        :month => 1,
+        :hour_of_month => 744
+        }).should eql(Time.new(2012, 1, 31, 23))
+
+      DateUtil.create_time({
+        :year => 2012,
+        :month => 1,
+        :hour_of_month => 1
+        }).should eql(Time.new(2012, 1, 1, 0))
+    end
+  end
+
   describe '#is_day_hour' do
     it 'should return false for night hours' do
       (0..6).each do |hour|
