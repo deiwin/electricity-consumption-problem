@@ -1,7 +1,7 @@
-require './consumption_parser'
+require './report_parser'
 
-describe ConsumptionParser do
-  let(:parser) {ConsumptionParser.new}
+describe ReportParser do
+  let(:parser) {ReportParser.new}
 
   describe '#parse_line' do
     context 'with parsed sample' do

@@ -1,4 +1,4 @@
-class ConsumptionParser
+class ReportParser
 
   def parse_line(line)
     line_splits = line.split(' ')

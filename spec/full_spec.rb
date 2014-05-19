@@ -1,8 +1,8 @@
-require './consumption_parser'
+require './report_parser'
 require './day_night_consumption_calc'
 
 describe 'Example data' do
-  let(:parser) {ConsumptionParser.new}
+  let(:parser) {ReportParser.new}
   let(:calc) {
     DayNightConsumptionCalc.new({
       :year => 2012,
