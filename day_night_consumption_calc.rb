@@ -6,24 +6,29 @@ class DayNightConsumptionCalc < Struct.new(:year, :month)
   end
 
   def calculate(hourly_reports)
-    result = {
-      :night_consumption => 0,
-      :day_consumption => 0
+    day_reports, night_reports = hourly_reports.partition(&method(:is_day_report))
+
+    return {
+      :day_consumption => sum_consumption_for_reports(day_reports),
+      :night_consumption => sum_consumption_for_reports(night_reports)
     }
-
-    hourly_reports.each do |report|
-      time = DateUtil.create_time({
-        :year => year,
-        :month => month,
-        :hour_of_month => report[:hour_of_month]
-      })
-      if DateUtil.is_day_hour(time)
-        result[:day_consumption] += report[:kw_consumed]
-      else
-        result[:night_consumption] += report[:kw_consumed]
-      end
-    end
-
-    return result
   end
+
+  private
+  def sum_consumption_for_reports(reports)
+    reports.inject(0) {|mem, report| mem + report[:kw_consumed]}
+  end
+
+  def is_day_report(report)
+    time = get_time_of_report(report)
+    DateUtil.is_day_hour(time)
+  end
+
+  def get_time_of_report(report)
+    DateUtil.create_time(report.merge({
+      :year => year,
+      :month => month
+    }))
+  end
+
 end
