@@ -1,4 +1,4 @@
-require './date_util'
+require './report_date_util'
 
 class DayNightConsumptionCalc < Struct.new(:year, :month)
   def initialize(h)
@@ -21,11 +21,11 @@ class DayNightConsumptionCalc < Struct.new(:year, :month)
 
   def is_day_report(report)
     time = get_time_of_report(report)
-    DateUtil.is_day_hour(time)
+    ReportDateUtil.is_day_hour(time)
   end
 
   def get_time_of_report(report)
-    DateUtil.create_time(report.merge({
+    ReportDateUtil.create_time(report.merge({
       :year => year,
       :month => month
     }))

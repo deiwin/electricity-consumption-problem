@@ -1,4 +1,4 @@
-class DateUtil
+class ReportDateUtil
 
   class << self
     AN_HOUR_IN_SECONDS = 60 * 60

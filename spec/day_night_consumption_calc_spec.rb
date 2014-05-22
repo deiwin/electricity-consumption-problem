@@ -1,6 +1,6 @@
 require './day_night_consumption_calc'
-require './date_util'
-require_relative 'support/date_util_helper'
+require './report_date_util'
+require_relative 'support/report_date_util_helper'
 
 describe DayNightConsumptionCalc do
 
@@ -24,7 +24,7 @@ describe DayNightConsumptionCalc do
 
     describe '#calculate' do
       it 'should sum night hours' do
-        DateUtil.should_receive(:is_day_hour) {false}.twice
+        ReportDateUtil.should_receive(:is_day_hour) {false}.twice
 
         result = calc.calculate([
           {
@@ -40,7 +40,7 @@ describe DayNightConsumptionCalc do
       end
 
       it 'should sum day hours' do
-        DateUtil.should_receive(:is_day_hour) {true}.twice
+        ReportDateUtil.should_receive(:is_day_hour) {true}.twice
 
         result = calc.calculate([
           {
