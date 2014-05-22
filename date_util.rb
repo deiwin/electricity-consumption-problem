@@ -1,8 +1,10 @@
 class DateUtil
 
   class << self
+    AN_HOUR_IN_SECONDS = 60 * 60
+
     def create_time(options)
-      Time.new(options[:year], options[:month]) + (options[:hour_of_month] - 1)* 60 * 60
+      Time.new(options[:year], options[:month]) + (options[:hour_of_month] - 1) * AN_HOUR_IN_SECONDS
     end
 
     def is_day_hour(time)
