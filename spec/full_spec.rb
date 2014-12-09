@@ -24,8 +24,8 @@ describe 'Example data' do
 
       result = calc.calculate(reports)
 
-      result.should include(:day_consumption => 6)
-      result.should include(:night_consumption => 8)
+      expect(result).to include(:day_consumption => 6)
+      expect(result).to include(:night_consumption => 8)
     end
   end
 
@@ -43,8 +43,8 @@ describe 'Example data' do
 
       result = calc.calculate(reports)
 
-      result.should include(:day_consumption => 6)
-      result.should include(:night_consumption => 15)
+      expect(result).to include(:day_consumption => 6)
+      expect(result).to include(:night_consumption => 15)
     end
   end
 end
